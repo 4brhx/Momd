@@ -1,0 +1,35 @@
+{
+  "build_command": "pnpm run build",
+  "capabilities": [],
+  "dev_command": "pnpm run dev",
+  "env_vars": {},
+  "experiments": null,
+  "git_remote": {
+    "repo_url": "s3://vida-prod-gitrepo/webdev-git/310519663746323960/6Fuijdj3acGwkKPBVEVg7D",
+    "access_key_id": "ASIAZV3A2ECZMUGH5T2O",
+    "secret_access_key": "kys23BYNFCWG7KglQbIfoa933iDYol9iEZPz3HDP",
+    "session_token": "IQoJb3JpZ2luX2VjECQaCXVzLWVhc3QtMSJGMEQCIDpn1qrkIWr1FmUfgfxasavPcFW7sVpJGNPcdwA/RXcSAiBqZ/mz8i7WiuLrB1M2X99K0tlYWnt3LZuBwXQLzAxGYSr/Awjt//////////8BEAQaDDY2NTM4NjA5ODg2NiIMDJ6ESC/BrevOedDhKtMD46I/wDnG3CwbdncKFetmsaJvyoYUooBAP6fRXskDWYzAj5HKCrFyvArFiv/xIqFPdGYvKmq/1AvsiBNcKhuzskm9vTL7ogFWf3AEAzASKcpRiyFMPQ9YvP+Nxjh40JyUHi+hFf8XJfaEWsg7mMVnjFmr07DcqJ50GCX2psOlpCreJG1NUBqnO4Dg3XFf3+QKlzIN5JS59UYhEzkocLyrmZ3/w+eiHQHimDM7y5FDb8zGuUcfrxs/1p7lkIDU5ViWvxS3wvtQNuC+2KbAtthBZ7zrAHzjW+v1h98mch01eiFN41OYlvtxjglWZhgy0RmvEiwLw/euT7C4UbB90eg/XEFR2XY8RyEUx2TRBg+RZNHacaCMd2bVCw++/xiljM8dOHfYOvWkkhPPKmdkqexl2GaOpFy4p3O7VoTaRy1zxYkBqwfKPIdYoDsvzL5MV7v0dhJ5OhN06+W6KtXS1wHqjiYxFIQza1LOlH7FRdKqaiLh+T10+vbiew74WZLUhT3oWVj5UYixoecNFSu/7K6163Xm1uKiE4dT0srbshOdT4Xv6mReHaY2ic6Q5kUuRZbUTBl69V1b9kJpImbUfoPkq0BHgQcx0ppDxJiup7r/CNnwYIgwooCn0QY6ngETIG4to4/cfL2Luy7l5onKtRU13xl7b5EZBWyhoW0uEpdFGmcukEgvJ0S8X6H9G5vIbrKlvGzub2CiC+Rhoo0UFtcKRkQKlzeaDkq4IB+f3dalTlmHGgIcMLzYhQaXMgRFqimHF3hmGiGUblZxkX4W8xwX1hnMa4fh7dwNf0XVS9gaROetcsmtJpcmvGr9Cjf3KwOmNu0S+JnijT3Pkw==",
+    "expiration": "2026-06-11T07:50:58.000Z"
+  },
+  "name": "french-philosophers-site",
+  "path": "/home/ubuntu/french-philosophers-site",
+  "port": 3000,
+  "secrets": {
+    "BUILT_IN_FORGE_API_KEY": "ew3xnkC4udTq2y5X2Kd98C",
+    "BUILT_IN_FORGE_API_URL": "https://forge.manus.ai",
+    "JWT_SECRET": "8eFrZCRyXC4ZquwKeW4SYH",
+    "OAUTH_SERVER_URL": "https://api.manus.im",
+    "OWNER_NAME": "Ibrahim Al-Obeidi",
+    "OWNER_OPEN_ID": "XBjs3922QoPBWub63FEbkY",
+    "VITE_ANALYTICS_ENDPOINT": "https://manus-analytics.com",
+    "VITE_ANALYTICS_WEBSITE_ID": "3b8f8e79-48fa-4b80-88d5-f388e83de346",
+    "VITE_APP_ID": "6Fuijdj3acGwkKPBVEVg7D",
+    "VITE_APP_LOGO": "",
+    "VITE_APP_TITLE": "فلاسفة فرنسا - الفكر والوجود",
+    "VITE_FRONTEND_FORGE_API_KEY": "GoeVLTCFdQGGU8LSAT23fv",
+    "VITE_FRONTEND_FORGE_API_URL": "https://forge.manus.ai",
+    "VITE_OAUTH_PORTAL_URL": "https://manus.im"
+  },
+  "template_id": "web-static",
+  "test_command": "pnpm test"
+}

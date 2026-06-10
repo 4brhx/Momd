@@ -2,9 +2,10 @@ import { COOKIE_NAME } from "@shared/const";
 import { getSessionCookieOptions } from "./_core/cookies";
 import { systemRouter } from "./_core/systemRouter";
 import { publicProcedure, router } from "./_core/trpc";
+import { z } from "zod";
+import { getPublishedArticles, getArticleBySlug, getArticlesByCategory, getAllCategories, getCategoryBySlug, getAuthorById, getAllAuthors } from "./db";
 
 export const appRouter = router({
-    // if you need to use socket.io, read and register route in server/_core/index.ts, all api should start with '/api/' so that the gateway can route correctly
   system: systemRouter,
   auth: router({
     me: publicProcedure.query(opts => opts.ctx.user),
@@ -17,12 +18,29 @@ export const appRouter = router({
     }),
   }),
 
-  // TODO: add feature routers here, e.g.
-  // todo: router({
-  //   list: protectedProcedure.query(({ ctx }) =>
-  //     db.getUserTodos(ctx.user.id)
-  //   ),
-  // }),
+  articles: router({
+    list: publicProcedure
+      .input(z.object({ limit: z.number().default(10), offset: z.number().default(0) }))
+      .query(({ input }) => getPublishedArticles(input.limit, input.offset)),
+    bySlug: publicProcedure
+      .input(z.object({ slug: z.string() }))
+      .query(({ input }) => getArticleBySlug(input.slug)),
+    byCategory: publicProcedure
+      .input(z.object({ categoryId: z.number(), limit: z.number().default(10) }))
+      .query(({ input }) => getArticlesByCategory(input.categoryId, input.limit)),
+  }),
+  categories: router({
+    list: publicProcedure.query(() => getAllCategories()),
+    bySlug: publicProcedure
+      .input(z.object({ slug: z.string() }))
+      .query(({ input }) => getCategoryBySlug(input.slug)),
+  }),
+  authors: router({
+    list: publicProcedure.query(() => getAllAuthors()),
+    byId: publicProcedure
+      .input(z.object({ id: z.number() }))
+      .query(({ input }) => getAuthorById(input.id)),
+  }),
 });
 
 export type AppRouter = typeof appRouter;

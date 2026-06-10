@@ -1,6 +1,6 @@
-import { eq } from "drizzle-orm";
+import { eq, desc, and } from "drizzle-orm";
 import { drizzle } from "drizzle-orm/mysql2";
-import { InsertUser, users } from "../drizzle/schema";
+import { InsertUser, users, articles, categories, authors } from "../drizzle/schema";
 import { ENV } from './_core/env';
 
 let _db: ReturnType<typeof drizzle> | null = null;
@@ -89,4 +89,73 @@ export async function getUserByOpenId(openId: string) {
   return result.length > 0 ? result[0] : undefined;
 }
 
-// TODO: add feature queries here as your schema grows.
+// Articles queries
+export async function getPublishedArticles(limit = 10, offset = 0) {
+  const db = await getDb();
+  if (!db) return [];
+  return db
+    .select()
+    .from(articles)
+    .where(eq(articles.status, "published"))
+    .orderBy(desc(articles.publishedAt))
+    .limit(limit)
+    .offset(offset);
+}
+
+export async function getArticleBySlug(slug: string) {
+  const db = await getDb();
+  if (!db) return undefined;
+  const result = await db
+    .select()
+    .from(articles)
+    .where(eq(articles.slug, slug))
+    .limit(1);
+  return result[0];
+}
+
+export async function getArticlesByCategory(categoryId: number, limit = 10) {
+  const db = await getDb();
+  if (!db) return [];
+  return db
+    .select()
+    .from(articles)
+    .where(and(eq(articles.categoryId, categoryId), eq(articles.status, "published")))
+    .orderBy(desc(articles.publishedAt))
+    .limit(limit);
+}
+
+// Categories queries
+export async function getAllCategories() {
+  const db = await getDb();
+  if (!db) return [];
+  return db.select().from(categories).orderBy(categories.name);
+}
+
+export async function getCategoryBySlug(slug: string) {
+  const db = await getDb();
+  if (!db) return undefined;
+  const result = await db
+    .select()
+    .from(categories)
+    .where(eq(categories.slug, slug))
+    .limit(1);
+  return result[0];
+}
+
+// Authors queries
+export async function getAuthorById(id: number) {
+  const db = await getDb();
+  if (!db) return undefined;
+  const result = await db
+    .select()
+    .from(authors)
+    .where(eq(authors.id, id))
+    .limit(1);
+  return result[0];
+}
+
+export async function getAllAuthors() {
+  const db = await getDb();
+  if (!db) return [];
+  return db.select().from(authors).orderBy(authors.name);
+}

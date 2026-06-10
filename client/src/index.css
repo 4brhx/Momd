@@ -1,4 +1,5 @@
 @import "tailwindcss";
+@import url('https://fonts.googleapis.com/css2?family=Noto+Naskh+Arabic:wght@400;500;600;700&family=Playfair+Display:wght@600;700;800&display=swap');
 @import "tw-animate-css";
 
 @custom-variant dark (&:is(.dark *));
@@ -117,8 +118,15 @@
   * {
     @apply border-border outline-ring/50;
   }
+  html {
+    direction: rtl;
+    font-family: 'Noto Naskh Arabic', serif;
+  }
   body {
     @apply bg-background text-foreground;
+  }
+  h1, h2, h3, h4, h5, h6 {
+    font-family: 'Playfair Display', 'Noto Naskh Arabic', serif;
   }
   button:not(:disabled),
   [role="button"]:not([aria-disabled="true"]),

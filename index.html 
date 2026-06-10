@@ -1,0 +1,182 @@
+import React from 'react';
+import { LazyImage } from './lazy-image';
+
+const blogs = [
+	{
+		title: 'Albert Camus',
+		slug: '#',
+		description:
+			'French philosopher and writer known for absurdism, humanism, and works like The Stranger and The Myth of Sisyphus.',
+		image: 'https://picsum.photos/seed/camus/640/360',
+		createdAt: '2025-08-25',
+		author: 'Albert Camus',
+		readTime: '7 min read',
+	},
+	{
+		title: 'Jean-Paul Sartre',
+		slug: '#',
+		description:
+			'French existentialist philosopher, novelist, and playwright, best known for Being and Nothingness and No Exit.',
+		image: 'https://picsum.photos/seed/sartre/640/360',
+		createdAt: '2025-07-14',
+		author: 'Jean-Paul Sartre',
+		readTime: '5 min read',
+	},
+	{
+		title: 'Simone de Beauvoir',
+		slug: '#',
+		description:
+			'French existentialist writer and philosopher, widely recognized for The Second Sex and her influence on feminist thought.',
+		image: 'https://picsum.photos/seed/beauvoir/640/360',
+		createdAt: '2025-06-30',
+		author: 'Simone de Beauvoir',
+		readTime: '6 min read',
+	},
+	{
+		title: 'Maurice Merleau-Ponty',
+		slug: '#',
+		description:
+			'French phenomenological philosopher focused on perception, embodiment, and lived experience.',
+		image: 'https://picsum.photos/seed/merleau/640/360',
+		createdAt: '2025-06-18',
+		author: 'Maurice Merleau-Ponty',
+		readTime: '8 min read',
+	},
+	{
+		title: 'Michel Foucault',
+		slug: '#',
+		description:
+			'French philosopher and historian of ideas known for his studies of power, knowledge, and social institutions.',
+		image: 'https://picsum.photos/seed/foucault/640/360',
+		createdAt: '2025-05-20',
+		author: 'Michel Foucault',
+		readTime: '4 min read',
+	},
+	{
+		title: 'Jacques Derrida',
+		slug: '#',
+		description:
+			'French philosopher associated with deconstruction, language, interpretation, and textual meaning.',
+		image: 'https://picsum.photos/seed/derrida/640/360',
+		createdAt: '2025-05-02',
+		author: 'Jacques Derrida',
+		readTime: '9 min read',
+	},
+	{
+		title: 'Henri Bergson',
+		slug: '#',
+		description:
+			'French philosopher known for time, consciousness, intuition, and creative evolution.',
+		image: 'https://picsum.photos/seed/bergson/640/360',
+		createdAt: '2025-04-15',
+		author: 'Henri Bergson',
+		readTime: '10 min read',
+	},
+	{
+		title: 'Voltaire',
+		slug: '#',
+		description:
+			'French Enlightenment philosopher and writer famous for criticism, reason, and advocacy of tolerance.',
+		image: 'https://picsum.photos/seed/voltaire/640/360',
+		createdAt: '2025-04-01',
+		author: 'Voltaire',
+		readTime: '6 min read',
+	},
+	{
+		title: 'René Descartes',
+		slug: '#',
+		description:
+			'French philosopher and mathematician known for rationalism and the phrase “I think, therefore I am.”',
+		image: 'https://picsum.photos/seed/descartes/640/360',
+		createdAt: '2025-03-22',
+		author: 'René Descartes',
+		readTime: '7 min read',
+	},
+	{
+		title: 'Jean-François Lyotard',
+		slug: '#',
+		description:
+			'French philosopher associated with postmodern thought and skepticism toward grand narratives.',
+		image: 'https://picsum.photos/seed/lyotard/640/360',
+		createdAt: '2025-03-09',
+		author: 'Jean-François Lyotard',
+		readTime: '5 min read',
+	},
+	{
+		title: 'Gilles Deleuze',
+		slug: '#',
+		description:
+			'French philosopher known for difference, repetition, and influential work in contemporary theory.',
+		image: 'https://picsum.photos/seed/deleuze/640/360',
+		createdAt: '2025-02-28',
+		author: 'Gilles Deleuze',
+		readTime: '8 min read',
+	},
+	{
+		title: 'Sophie Germain',
+		slug: '#',
+		description:
+			'French mathematician and thinker remembered for her intellectual legacy and contribution to scientific philosophy.',
+		image: 'https://picsum.photos/seed/germain/640/360',
+		createdAt: '2025-02-14',
+		author: 'Sophie Germain',
+		readTime: '6 min read',
+	},
+];
+
+export function BlogSection() {
+	return (
+		<div className="mx-auto w-full max-w-5xl grow">
+			<div
+				aria-hidden
+				className="absolute inset-0 isolate contain-strict -z-10 opacity-60"
+			>
+				<div className="-rotate-45 bg-[radial-gradient(68.54%_68.72%_at_55.02%_31.46%,--theme(--color-foreground/.06)_0,hsla(0,0%,55%,.02)_50%,--theme(--color-foreground/.01)_80%)] absolute top-0 left-0 h-320 w-140 -translate-y-87.5 rounded-full" />
+				<div className="-rotate-45 bg-[radial-gradient(50%_50%_at_50%_50%,--theme(--color-foreground/.04)_0,--theme(--color-foreground/.01)_80%,transparent_100%)] absolute top-0 left-0 h-320 w-60 [translate:5%_-50%] rounded-full" />
+				<div className="-rotate-45 bg-[radial-gradient(50%_50%_at_50%_50%,--theme(--color-foreground/.04)_0,--theme(--color-foreground/.01)_80%,transparent_100%)] absolute top-0 left-0 h-320 w-60 -translate-y-87.5 rounded-full" />
+			</div>
+			<div className="space-y-1 px-4 py-8">
+				<h1 className="font-mono text-4xl font-bold tracking-wide">
+					French Philosophers
+				</h1>
+				<p className="text-muted-foreground text-base">
+					Discover the most influential French philosophers and their ideas.
+				</p>
+			</div>
+			<div className="absolute inset-x-0 h-px w-full border-b border-dashed" />
+			<div className="grid p-4 md:grid-cols-2 lg:grid-cols-3 z-10">
+				{blogs.map((blog) => (
+					<a
+						href={blog.slug}
+						key={blog.title}
+						className="group hover:bg-accent/60 active:bg-accent flex flex-col gap-2 rounded-lg p-2 duration-75"
+					>
+						<LazyImage
+							src={blog.image}
+							fallback="https://placehold.co/640x360?text=fallback-image"
+							inView={true}
+							alt={blog.title}
+							ratio={16 / 9}
+							className="transition-all duration-500 group-hover:scale-105"
+						/>
+						<div className="space-y-2 px-2 pb-2">
+							<div className="text-muted-foreground flex items-center gap-2 text-[11px] sm:text-xs">
+								<p>by {blog.author}</p>
+								<div className="bg-muted-foreground size-1 rounded-full" />
+								<p>{blog.createdAt}</p>
+								<div className="bg-muted-foreground size-1 rounded-full" />
+								<p>{blog.readTime}</p>
+							</div>
+							<h2 className="line-clamp-2 text-lg leading-5 font-semibold tracking-tight">
+								{blog.title}
+							</h2>
+							<p className="text-muted-foreground line-clamp-3 text-sm">
+								{blog.description}
+							</p>
+						</div>
+					</a>
+				))}
+			</div>
+		</div>
+	);
+}

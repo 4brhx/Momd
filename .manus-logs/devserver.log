@@ -1,8 +1,0 @@
-[2026-06-10T19:51:06.381Z] Starting dev server with command: pnpm run dev
-[2026-06-10T19:51:08.141Z] > french-philosophers-site@1.0.0 dev /home/ubuntu/french-philosophers-site
-[2026-06-10T19:51:08.141Z] > vite --host
-[2026-06-10T19:51:08.540Z] VITE v7.1.9  ready in 361 ms
-[2026-06-10T19:51:08.540Z] ➜  Local:   http://localhost:3000/
-[2026-06-10T19:51:08.540Z] ➜  Network: http://169.254.0.21:3000/
-[2026-06-10T19:52:41.201Z] 7:52:41 PM [vite] (client) page reload index.html
-[2026-06-10T19:54:04.255Z] 7:54:04 PM [vite] (client) page reload index.html

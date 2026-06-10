@@ -1,1 +1,424 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>French Philosophers Blog</title>
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
 
+    body {
+      font-family: Arial, sans-serif;
+      background: #f3ece2;
+      color: #111;
+    }
+
+    .mx-auto {
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    .w-full {
+      width: 100%;
+    }
+
+    .grow {
+      flex-grow: 1;
+    }
+
+    .relative {
+      position: relative;
+    }
+
+    .absolute {
+      position: absolute;
+    }
+
+    .inset-0 {
+      inset: 0;
+    }
+
+    .inset-x-0 {
+      left: 0;
+      right: 0;
+    }
+
+    .top-0 {
+      top: 0;
+    }
+
+    .left-0 {
+      left: 0;
+    }
+
+    .z-10 {
+      z-index: 10;
+    }
+
+    .-z-10 {
+      z-index: -10;
+    }
+
+    .opacity-60 {
+      opacity: 0.6;
+    }
+
+    .isolate {
+      isolation: isolate;
+    }
+
+    .contain-strict {
+      contain: strict;
+    }
+
+    .-rotate-45 {
+      transform: rotate(-45deg);
+    }
+
+    .rounded-full {
+      border-radius: 9999px;
+    }
+
+    .absolute-bg-1,
+    .absolute-bg-2,
+    .absolute-bg-3 {
+      position: absolute;
+      top: 0;
+      left: 0;
+      border-radius: 9999px;
+      opacity: 0.6;
+      pointer-events: none;
+    }
+
+    .absolute-bg-1 {
+      height: 320px;
+      width: 140px;
+      background: radial-gradient(circle at 55.02% 31.46%, rgba(0,0,0,0.06) 0, rgba(128,128,128,0.02) 50%, rgba(0,0,0,0.01) 80%);
+      transform: rotate(-45deg) translateY(-87.5px);
+    }
+
+    .absolute-bg-2 {
+      height: 320px;
+      width: 60px;
+      background: radial-gradient(circle at 50% 50%, rgba(0,0,0,0.04) 0, rgba(0,0,0,0.01) 80%, transparent 100%);
+      transform: rotate(-45deg) translate(5%, -50%);
+    }
+
+    .absolute-bg-3 {
+      height: 320px;
+      width: 60px;
+      background: radial-gradient(circle at 50% 50%, rgba(0,0,0,0.04) 0, rgba(0,0,0,0.01) 80%, transparent 100%);
+      transform: rotate(-45deg) translateY(-87.5px);
+    }
+
+    .space-y-1 > * + * {
+      margin-top: 0.25rem;
+    }
+
+    .px-4 {
+      padding-left: 1rem;
+      padding-right: 1rem;
+    }
+
+    .py-8 {
+      padding-top: 2rem;
+      padding-bottom: 2rem;
+    }
+
+    .p-4 {
+      padding: 1rem;
+    }
+
+    .pb-2 {
+      padding-bottom: 0.5rem;
+    }
+
+    .space-y-2 > * + * {
+      margin-top: 0.5rem;
+    }
+
+    .font-mono {
+      font-family: monospace;
+    }
+
+    .text-4xl {
+      font-size: 2.25rem;
+    }
+
+    .font-bold {
+      font-weight: 700;
+    }
+
+    .tracking-wide {
+      letter-spacing: 0.02em;
+    }
+
+    .text-base {
+      font-size: 1rem;
+    }
+
+    .text-sm {
+      font-size: 0.875rem;
+    }
+
+    .text-lg {
+      font-size: 1.125rem;
+    }
+
+    .leading-5 {
+      line-height: 1.25rem;
+    }
+
+    .font-semibold {
+      font-weight: 600;
+    }
+
+    .tracking-tight {
+      letter-spacing: -0.01em;
+    }
+
+    .text-muted-foreground {
+      color: #6b7280;
+    }
+
+    .grid {
+      display: grid;
+      gap: 1rem;
+    }
+
+    .group {
+      display: flex;
+      flex-direction: column;
+      gap: 0.5rem;
+      border-radius: 0.5rem;
+      padding: 0.5rem;
+      text-decoration: none;
+      color: inherit;
+      transition: 0.15s;
+    }
+
+    .group:hover {
+      background: rgba(255, 255, 255, 0.6);
+    }
+
+    .group:active {
+      background: rgba(255, 255, 255, 0.8);
+    }
+
+    .line-clamp-2,
+    .line-clamp-3 {
+      display: -webkit-box;
+      -webkit-box-orient: vertical;
+      overflow: hidden;
+    }
+
+    .line-clamp-2 {
+      -webkit-line-clamp: 2;
+    }
+
+    .line-clamp-3 {
+      -webkit-line-clamp: 3;
+    }
+
+    .flex {
+      display: flex;
+    }
+
+    .items-center {
+      align-items: center;
+    }
+
+    .gap-2 {
+      gap: 0.5rem;
+    }
+
+    .size-1 {
+      width: 0.25rem;
+      height: 0.25rem;
+    }
+
+    .bg-muted-foreground {
+      background: #6b7280;
+    }
+
+    .transition-all {
+      transition: all 0.5s;
+    }
+
+    .duration-500 {
+      transition-duration: 500ms;
+    }
+
+    .group:hover .hover-scale {
+      transform: scale(1.05);
+    }
+
+    .card-image {
+      width: 100%;
+      aspect-ratio: 16 / 9;
+      object-fit: cover;
+      border-radius: 0.75rem;
+      display: block;
+    }
+
+    .z-10 {
+      position: relative;
+      z-index: 10;
+    }
+
+    .header {
+      padding: 2rem 1rem;
+    }
+
+    .header h1 {
+      margin-bottom: 0.25rem;
+    }
+
+    .divider {
+      position: absolute;
+      left: 0;
+      right: 0;
+      height: 1px;
+      border-bottom: 1px dashed #ccc;
+    }
+
+    @media (min-width: 768px) {
+      .md-grid-cols-2 {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+    }
+
+    @media (min-width: 1024px) {
+      .lg-grid-cols-3 {
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="mx-auto w-full grow">
+    <div aria-hidden class="absolute inset-0 isolate contain-strict -z-10 opacity-60">
+      <div class="absolute-bg-1"></div>
+      <div class="absolute-bg-2"></div>
+      <div class="absolute-bg-3"></div>
+    </div>
+
+    <div class="space-y-1 px-4 py-8">
+      <h1 class="font-mono text-4xl font-bold tracking-wide">French Philosophers Blog</h1>
+      <p class="text-muted-foreground text-base">
+        Discover the most influential French philosophers and their ideas.
+      </p>
+    </div>
+
+    <div class="absolute inset-x-0 divider"></div>
+
+    <div class="grid p-4 md-grid-cols-2 lg-grid-cols-3 z-10">
+      <a href="#" class="group">
+        <img class="card-image hover-scale transition-all duration-500" src="https://picsum.photos/seed/camus/640/360" alt="Albert Camus" />
+        <div class="space-y-2 px-2 pb-2">
+          <div class="text-muted-foreground flex items-center gap-2 text-[11px] sm:text-xs">
+            <p>by Albert Camus</p>
+            <div class="bg-muted-foreground size-1 rounded-full"></div>
+            <p>2025-08-25</p>
+            <div class="bg-muted-foreground size-1 rounded-full"></div>
+            <p>7 min read</p>
+          </div>
+          <h2 class="line-clamp-2 text-lg leading-5 font-semibold tracking-tight">Albert Camus</h2>
+          <p class="text-muted-foreground line-clamp-3 text-sm">
+            French philosopher and writer known for absurdism, humanism, and works like The Stranger and The Myth of Sisyphus.
+          </p>
+        </div>
+      </a>
+
+      <a href="#" class="group">
+        <img class="card-image hover-scale transition-all duration-500" src="https://picsum.photos/seed/sartre/640/360" alt="Jean-Paul Sartre" />
+        <div class="space-y-2 px-2 pb-2">
+          <div class="text-muted-foreground flex items-center gap-2 text-[11px] sm:text-xs">
+            <p>by Jean-Paul Sartre</p>
+            <div class="bg-muted-foreground size-1 rounded-full"></div>
+            <p>2025-07-14</p>
+            <div class="bg-muted-foreground size-1 rounded-full"></div>
+            <p>5 min read</p>
+          </div>
+          <h2 class="line-clamp-2 text-lg leading-5 font-semibold tracking-tight">Jean-Paul Sartre</h2>
+          <p class="text-muted-foreground line-clamp-3 text-sm">
+            French existentialist philosopher, novelist, and playwright, best known for Being and Nothingness and No Exit.
+          </p>
+        </div>
+      </a>
+
+      <a href="#" class="group">
+        <img class="card-image hover-scale transition-all duration-500" src="https://picsum.photos/seed/beauvoir/640/360" alt="Simone de Beauvoir" />
+        <div class="space-y-2 px-2 pb-2">
+          <div class="text-muted-foreground flex items-center gap-2 text-[11px] sm:text-xs">
+            <p>by Simone de Beauvoir</p>
+            <div class="bg-muted-foreground size-1 rounded-full"></div>
+            <p>2025-06-30</p>
+            <div class="bg-muted-foreground size-1 rounded-full"></div>
+            <p>6 min read</p>
+          </div>
+          <h2 class="line-clamp-2 text-lg leading-5 font-semibold tracking-tight">Simone de Beauvoir</h2>
+          <p class="text-muted-foreground line-clamp-3 text-sm">
+            French existentialist writer and philosopher, widely recognized for The Second Sex and her influence on feminist thought.
+          </p>
+        </div>
+      </a>
+
+      <a href="#" class="group">
+        <img class="card-image hover-scale transition-all duration-500" src="https://picsum.photos/seed/foucault/640/360" alt="Michel Foucault" />
+        <div class="space-y-2 px-2 pb-2">
+          <div class="text-muted-foreground flex items-center gap-2 text-[11px] sm:text-xs">
+            <p>by Michel Foucault</p>
+            <div class="bg-muted-foreground size-1 rounded-full"></div>
+            <p>2025-06-18</p>
+            <div class="bg-muted-foreground size-1 rounded-full"></div>
+            <p>8 min read</p>
+          </div>
+          <h2 class="line-clamp-2 text-lg leading-5 font-semibold tracking-tight">Michel Foucault</h2>
+          <p class="text-muted-foreground line-clamp-3 text-sm">
+            French philosopher and historian of ideas known for his studies of power, knowledge, and social institutions.
+          </p>
+        </div>
+      </a>
+
+      <a href="#" class="group">
+        <img class="card-image hover-scale transition-all duration-500" src="https://picsum.photos/seed/derrida/640/360" alt="Jacques Derrida" />
+        <div class="space-y-2 px-2 pb-2">
+          <div class="text-muted-foreground flex items-center gap-2 text-[11px] sm:text-xs">
+            <p>by Jacques Derrida</p>
+            <div class="bg-muted-foreground size-1 rounded-full"></div>
+            <p>2025-05-20</p>
+            <div class="bg-muted-foreground size-1 rounded-full"></div>
+            <p>4 min read</p>
+          </div>
+          <h2 class="line-clamp-2 text-lg leading-5 font-semibold tracking-tight">Jacques Derrida</h2>
+          <p class="text-muted-foreground line-clamp-3 text-sm">
+            French philosopher associated with deconstruction, language, interpretation, and textual meaning.
+          </p>
+        </div>
+      </a>
+
+      <a href="#" class="group">
+        <img class="card-image hover-scale transition-all duration-500" src="https://picsum.photos/seed/descartes/640/360" alt="René Descartes" />
+        <div class="space-y-2 px-2 pb-2">
+          <div class="text-muted-foreground flex items-center gap-2 text-[11px] sm:text-xs">
+            <p>by René Descartes</p>
+            <div class="bg-muted-foreground size-1 rounded-full"></div>
+            <p>2025-05-02</p>
+            <div class="bg-muted-foreground size-1 rounded-full"></div>
+            <p>9 min read</p>
+          </div>
+          <h2 class="line-clamp-2 text-lg leading-5 font-semibold tracking-tight">René Descartes</h2>
+          <p class="text-muted-foreground line-clamp-3 text-sm">
+            French philosopher and mathematician known for rationalism and the phrase “I think, therefore I am.”
+          </p>
+        </div>
+      </a>
+    </div>
+  </div>
+</body>
+</html>
